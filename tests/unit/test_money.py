@@ -10,8 +10,8 @@ from conversor.money import dividir_por_tasa, multiplicar_por_tasa, redondear_mo
 @pytest.mark.parametrize(
     ("monto", "tasa", "esperado"),
     [
-        (Decimal("100"), Decimal("17.15"), Decimal("1715.00")),
-        (Decimal("0"), Decimal("17.15"), Decimal("0.00")),
+        (Decimal("100"), Decimal("3.75"), Decimal("375.00")),
+        (Decimal("0"), Decimal("3.75"), Decimal("0.00")),
         (Decimal("50"), Decimal("1"), Decimal("50")),
         (Decimal("10.50"), Decimal("0.92"), Decimal("9.660")),
         (Decimal("1"), Decimal("149.50"), Decimal("149.50")),
@@ -55,16 +55,16 @@ def test_redondear_rechaza_decimales_negativos():
 
 @pytest.mark.unit
 def test_dividir_por_tasa_normal():
-    assert dividir_por_tasa(Decimal("1715"), Decimal("17.15")) == Decimal("100")
+    assert dividir_por_tasa(Decimal("375"), Decimal("3.75")) == Decimal("100")
 
 
 @pytest.mark.unit
 def test_dividir_por_tasa_cero_lanza_zero_division():
     with pytest.raises(ZeroDivisionError):
-        dividir_por_tasa(Decimal("100"), Decimal("0"), "MXN")
+        dividir_por_tasa(Decimal("100"), Decimal("0"), "PEN")
 
 
 @pytest.mark.unit
 def test_dividir_por_tasa_cero_es_tasa_cero_error():
-    with pytest.raises(TasaCeroError, match="MXN"):
-        dividir_por_tasa(Decimal("100"), Decimal("0"), "MXN")
+    with pytest.raises(TasaCeroError, match="PEN"):
+        dividir_por_tasa(Decimal("100"), Decimal("0"), "PEN")

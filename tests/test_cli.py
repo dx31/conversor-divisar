@@ -1,11 +1,11 @@
 from conversor.cli import ejecutar
 
 
-def test_cli_convertir_usd_a_mxn(capsys):
-    codigo = ejecutar(["convertir", "100", "USD", "MXN"])
+def test_cli_convertir_usd_a_pen(capsys):
+    codigo = ejecutar(["convertir", "100", "USD", "PEN"])
     salida = capsys.readouterr()
     assert codigo == 0
-    assert "1715.00 MXN" in salida.out
+    assert "375.00 PEN" in salida.out
 
 
 def test_cli_divisa_no_soportada(capsys):
@@ -16,7 +16,7 @@ def test_cli_divisa_no_soportada(capsys):
 
 
 def test_cli_monto_invalido(capsys):
-    codigo = ejecutar(["convertir", "abc", "USD", "MXN"])
+    codigo = ejecutar(["convertir", "abc", "USD", "PEN"])
     assert codigo == 2
     assert "inválido" in capsys.readouterr().err.lower()
 
@@ -26,7 +26,7 @@ def test_cli_lista_divisas(capsys):
     salida = capsys.readouterr().out
     assert codigo == 0
     assert "USD" in salida
-    assert "MXN" in salida
+    assert "PEN" in salida
 
 
 def test_cli_sin_comando_muestra_ayuda(capsys):

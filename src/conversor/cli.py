@@ -20,7 +20,7 @@ def construir_parser() -> argparse.ArgumentParser:
     conv = sub.add_parser("convertir", help="Convertir un monto")
     conv.add_argument("monto", help="Cantidad a convertir")
     conv.add_argument("origen", help="Código ISO de origen, p. ej. USD")
-    conv.add_argument("destino", help="Código ISO de destino, p. ej. MXN")
+    conv.add_argument("destino", help="Código ISO de destino, p. ej. PEN")
 
     sub.add_parser("divisas", help="Listar divisas soportadas")
     return parser

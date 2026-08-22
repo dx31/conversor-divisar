@@ -16,7 +16,7 @@ class Divisa:
 
 CATALOGO_POR_DEFECTO = {
     "USD": Divisa("USD", "Dólar estadounidense", Decimal("1"), 2),
-    "MXN": Divisa("MXN", "Peso mexicano", Decimal("17.15"), 2),
+    "PEN": Divisa("PEN", "Sol peruano", Decimal("3.75"), 2),
     "EUR": Divisa("EUR", "Euro", Decimal("0.92"), 2),
     "GBP": Divisa("GBP", "Libra esterlina", Decimal("0.78"), 2),
     "JPY": Divisa("JPY", "Yen japonés", Decimal("149.50"), 0),

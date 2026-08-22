@@ -17,18 +17,18 @@ def convertidor() -> ConvertidorDivisas:
 
 @pytest.mark.integration
 def test_flujo_conversion_guarda_transaccion(convertidor: ConvertidorDivisas):
-    resultado = convertidor.convertir(Decimal("100"), "USD", "MXN")
+    resultado = convertidor.convertir(Decimal("100"), "USD", "PEN")
 
-    assert resultado == Decimal("1715.00")
+    assert resultado == Decimal("375.00")
     historial = convertidor.historial_transacciones()
     assert len(historial) == 1
 
     tx = historial[0]
     assert isinstance(tx, Transaccion)
     assert tx.origen == "USD"
-    assert tx.destino == "MXN"
+    assert tx.destino == "PEN"
     assert tx.monto == Decimal("100")
-    assert tx.resultado == Decimal("1715.00")
+    assert tx.resultado == Decimal("375.00")
     assert tx.marca_tiempo is not None
 
 
@@ -37,7 +37,7 @@ def test_flujo_varias_conversiones_acumulan_historial(
     convertidor: ConvertidorDivisas,
 ):
     convertidor.convertir("10", "EUR", "USD")
-    convertidor.convertir("200", "MXN", "USD")
+    convertidor.convertir("200", "PEN", "USD")
     convertidor.convertir("1", "USD", "JPY")
 
     historial = convertidor.historial_transacciones()

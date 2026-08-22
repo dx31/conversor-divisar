@@ -44,7 +44,7 @@ def test_divisa_no_soportada_no_guarda_historial():
 @pytest.mark.unit
 def test_catalogo_soporta_solo_codigos_conocidos():
     catalogo = CatalogoDivisas()
-    assert catalogo.soporta("mxn")
+    assert catalogo.soporta("pen")
     assert not catalogo.soporta("XYZ")
 
 

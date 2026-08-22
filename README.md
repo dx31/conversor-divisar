@@ -21,11 +21,11 @@ python -m pip install -e ".[dev]"
 ## Uso
 
 ```bash
-python -m conversor convertir 100 USD MXN
+python -m conversor convertir 100 USD PEN
 python -m conversor divisas
 ```
 
-Tasas del catálogo (unidades de cada divisa por 1 USD): USD 1, MXN 17.15, EUR 0.92, GBP 0.78, JPY 149.50, CAD 1.36.
+Tasas del catálogo (unidades de cada divisa por 1 USD): USD 1, PEN 3.75, EUR 0.92, GBP 0.78, JPY 149.50, CAD 1.36.
 
 La conversión es `(monto / tasa_origen) * tasa_destino`, redondeada con HALF_UP. El yen no usa decimales.
 
