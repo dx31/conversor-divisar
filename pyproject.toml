@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "conversor-divisas"
+version = "1.0.0"
+description = "Conversor de divisas con historial, pruebas y cobertura"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov>=5.0"]
+
+[project.scripts]
+conversor = "conversor.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = [
+    "unit: funciones puras de multiplicación y redondeo, y casos de error",
+    "integration: flujo de conversión guardando transacciones en historial",
+]
+
+[tool.coverage.run]
+source = ["conversor"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+exclude_lines = [
+    "if __name__ == .__main__.:",
+]
